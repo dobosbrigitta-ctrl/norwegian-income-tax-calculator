@@ -25,7 +25,6 @@ public class TaxCalculator {
 
     public TaxCalculator(double grossValue) {
         this.grossValue = grossValue;
-
     }
 
     public double calculateNetValue() {

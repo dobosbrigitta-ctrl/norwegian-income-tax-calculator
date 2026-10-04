@@ -1,28 +1,47 @@
 
 <div th:fragment="calculate_main">
 
-    <h2>Norvég adókalkulátor</h2>
+    <h2>Norwegian Income Tax Calculator</h2>
 
     <form th:action="@{/calculate}" method="post">
 
 
-        <input type="text"
-               name="myTextBox"
+        <input type="number"
+               name="grossValue"
+               min="0"
                value=""
-               placeholder="Add meg a bruttó fizetésedet"
+               placeholder="Enter your gross salary (yearly)!"
                style="width: 200px; padding: 5px;" />
         <select id="currency" name="currency">
-            <option value="NOK">Norvég korona (NOK)</option>
+            <option value="NOK">Norwegian Krone (NOK)</option>
             <option value="HUF">Forint (HUF)</option>
-            <option value="EUR">Euró (EUR)</option>
-            <option value="USD">USA dollár (USD)</option>
+            <option value="EUR">Euro (EUR)</option>
+            <option value="USD">USA dollar (USD)</option>
         </select>
+
+        <br>
+        <input type="checkbox"
+               name="haveTaxCard"
+                id="haveTaxCard"/>
+        <label for="haveTaxCard">I have a tax Card for fixed percentage taxing: </label>
+
+        <input type="number"
+               name="taxPercentage"
+               id="taxPercentage"
+                min="0"
+                max="100"
+                value="30"/>
+        <label for="taxPercentage">%</label>
+
+
+
+
 
         <br><br>
 
 
 
-        <button type="submit" style="padding: 5px 15px;">Mutasd a nettómat!</button>
+        <button type="submit" style="padding: 5px 15px;">Calculate Net Salary!</button>
 
     </form>
 </div>
