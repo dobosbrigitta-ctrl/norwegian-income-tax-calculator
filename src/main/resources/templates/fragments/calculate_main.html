@@ -1,0 +1,28 @@
+
+<div th:fragment="calculate_main">
+
+    <h2>Norvég adókalkulátor</h2>
+
+    <form th:action="@{/calculate}" method="post">
+
+
+        <input type="text"
+               name="myTextBox"
+               value=""
+               placeholder="Add meg a bruttó fizetésedet"
+               style="width: 200px; padding: 5px;" />
+        <select id="currency" name="currency">
+            <option value="NOK">Norvég korona (NOK)</option>
+            <option value="HUF">Forint (HUF)</option>
+            <option value="EUR">Euró (EUR)</option>
+            <option value="USD">USA dollár (USD)</option>
+        </select>
+
+        <br><br>
+
+
+
+        <button type="submit" style="padding: 5px 15px;">Mutasd a nettómat!</button>
+
+    </form>
+</div>

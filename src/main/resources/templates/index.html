@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Norvég adókalkulátor</title>
+</head>
+<body>
+
+<div th:replace="~{fragments/calculate_main :: calculate_main}"></div>
+
+<script themicolons="true" th:if="${error}">
+    let errorMessage = "[[${error}]]";
+    alert(errorMessage);
+</script>
+
+</body>
+</html>
