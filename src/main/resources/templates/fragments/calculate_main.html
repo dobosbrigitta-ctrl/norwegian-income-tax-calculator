@@ -11,7 +11,10 @@
                min="0"
                value=""
                placeholder="Enter your gross salary (yearly)!"
-               style="width: 200px; padding: 5px;" />
+               style="width: 200px; padding: 5px;"
+               required
+               oninvalid="this.setCustomValidity('The field cannot be empty!')"
+               oninput="this.setCustomValidity('')"/>
         <select id="currency" name="currency">
             <option value="NOK">Norwegian Krone (NOK)</option>
             <option value="HUF">Forint (HUF)</option>
@@ -28,9 +31,12 @@
         <input type="number"
                name="taxPercentage"
                id="taxPercentage"
-                min="0"
-                max="100"
-                value="30"/>
+               min="0"
+               max="100"
+               value="30"
+               required
+               oninvalid="this.setCustomValidity('The field cannot be empty!')"
+               oninput="this.setCustomValidity('')"/>
         <label for="taxPercentage">%</label>
 
 

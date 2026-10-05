@@ -2,7 +2,9 @@ package com.example.demo.util;
 
 import org.springframework.web.client.RestClient;
 import java.util.Map;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ExchangeRate {
     private static final String API_KEY = "dbf566ed5f485a64493f4360";
     private static final String BASE_URL = "https://v6.exchangerate-api.com";
