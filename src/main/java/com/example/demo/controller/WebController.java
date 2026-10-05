@@ -17,6 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class WebController {
 
+    private final ExchangeRate exchangeRate;
+
+    public WebController(ExchangeRate exchangeRate) {
+        this.exchangeRate = exchangeRate;
+    }
+
 
     @GetMapping("/")
     public String index(Model model) {
@@ -30,7 +36,7 @@ public class WebController {
     public String processTaxForm(
 
             @Min(value = 0, message = "Please submit only positive integer!")
-            @RequestParam("grossValue") int submittedGrossValue,
+            @RequestParam(value = "grossValue", required = false) Integer submittedGrossValue,
 
             @Min(value = 0, message = "The minimum tax percentage is 0%!")
             @Max(value = 100, message = "The maximum tax percentage is 100%!")
@@ -44,8 +50,7 @@ public class WebController {
             @RequestParam(value = "haveTaxCard", defaultValue = "false") boolean haveTaxCard,
             Model model) {
 
-
-        double convertedGrossValue = new ExchangeRate().convertCurrencyToNok(submittedGrossValue, currency);
+        double convertedGrossValue = exchangeRate.convertCurrencyToNok(submittedGrossValue, currency);
 
         if (haveTaxCard) {
             int netSalary = (int) (convertedGrossValue / 100 * taxPercentage);
