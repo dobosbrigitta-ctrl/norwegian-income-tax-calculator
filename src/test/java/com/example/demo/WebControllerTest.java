@@ -66,4 +66,22 @@ class WebControllerTest {
                 .andExpect(model().attribute("textValue", "Error: Gross value cannot be empty!"))
                 .andExpect(model().attribute("BasicTax", "0"));
     }
+    @Test
+    void processTaxForm_WhenExchangeRateApiIsOffline_ShouldReturnNokFallbackMessage() throws Exception {
+        when(exchangeRate.convertCurrencyToNok(50000, "EUR"))
+                .thenThrow(new RuntimeException("Network connection failed"));
+
+        mockMvc.perform(post("/calculate")
+                        .param("grossValue", "50000")
+                        .param("taxPercentage", "30")
+                        .param("currency", "EUR")
+                        .param("haveTaxCard", "false"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("calculate"))
+                .andExpect(model().attribute("textValue", "Error: The ExchangeRate API is not available! Please select NOK currency and try again."))
+                .andExpect(model().attribute("BasicTax", "0"))
+                .andExpect(model().attribute("BandTax", "0"))
+                .andExpect(model().attribute("HealthContribution", "0"));
+    }
+
 }
