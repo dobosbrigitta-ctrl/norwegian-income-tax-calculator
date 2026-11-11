@@ -1,23 +1,83 @@
 # Norwegian Income Tax Calculator
 
-A simple and intuitive Norwegian tax calculator that helps you estimate your take-home pay. 
-Just enter your gross salary, and the app instantly calculates your net income based on Norwegian tax regulations.
+A Java Spring Boot application designed to estimate net income based on Norwegian tax rules and support financial decision-making when comparing job opportunities.
 
-## Technological background
-* Java/25
-* Spring Boot
-* Maven
+Users can enter their gross salary, select a preferred currency, and view estimated take-home pay. The application also integrates external services for live currency exchange rates and AI-powered job offer analysis.
 
- 
- ## How is it used?
-The application runs locally on **port 8080** (http://localhost:8080).
+---
 
-From a user perspective, it works in a few simple steps:
-1. **Enter your gross salary** data into the input field.
-2. **Select your preferred currency** from the dropdown menu.
-3. The app fetches live exchange rates from the [ExchangeRate-API](https://exchangerate-api.com) to perform accurate conversions.
-4. **Get your net income** instantly calculated on the screen.
+### Backend Architecture
 
+- **Java 25** – Core programming language.
+- **Spring Boot** – Backend application framework.
+- **Maven** – Dependency and build management.
+- **REST API** – Backend endpoints and service communication.
+
+### External API Integration
+
+The application integrates with the **ExchangeRate-API** to retrieve live currency exchange rates.
+
+Key integration concepts include:
+- HTTP communication with external services.
+- REST API consumption.
+- JSON response handling.
+- External service configuration.
+- Currency conversion using retrieved exchange rates.
+
+### AI Integration – Microsoft Azure AI Foundry
+
+The application integrates a custom AI agent built with **Microsoft Azure AI Foundry** to support job offer analysis and comparison.
+
+The AI agent analyses job-related financial information and provides contextual insights, including:
+
+- Comparison of job offers.
+- Differences in estimated monthly disposable income.
+- Salary and expense trade-offs.
+- Identification of missing information relevant to decision-making.
+- AI-generated explanations to support informed comparisons.
+
+A dedicated Java service handles communication with the Azure AI Foundry agent and integrates its responses into the application.
+
+### Calculation Logic
+
+The application's financial and tax-related calculations are handled by Java backend services. The AI agent provides additional analysis and interpretation rather than performing the underlying tax calculations.
+
+### Key Technologies
+
+- Java 25
+- Spring Boot
+- Microsoft Azure AI Foundry, using gpt-5.4-nano
+- REST API
+- HTTP & JSON
+- ExchangeRate-API
+- Maven
+
+---
+
+## Key Features
+
+- **Net Income Estimation:** Calculate estimated take-home pay based on gross salary and Norwegian tax rules.
+- **Currency Selection:** Choose the preferred currency for displaying financial results.
+- **Live Exchange Rates:** Retrieve current exchange rates through an external API.
+- **Currency Conversion:** Convert financial results into the selected currency.
+- **AI-Powered Job Offer Analysis:** Use a custom Azure AI Foundry agent to analyse and compare job opportunities.
+- **Financial Comparison Insights:** Understand differences in monthly disposable income and salary-related trade-offs.
+
+---
+
+## Software & AI Integration
+
+This project demonstrates practical experience integrating multiple external services into a Java backend application.
+
+It combines conventional REST API integration with AI agent integration, covering HTTP communication, JSON data exchange, external service configuration, prompt-based interaction, and AI-generated response handling.
+
+The project explores how AI agents can extend traditional backend applications by providing contextual analysis on top of deterministic business logic.
+
+---
+
+## Acknowledgements
+
+Developed as a hands-on portfolio project to strengthen practical skills in Java backend development, Spring Boot, REST API integration, external service connectivity, AI agent integration, Microsoft Azure AI Foundry, financial data processing, and software integration.
 
 ## Acknowledgments
 
